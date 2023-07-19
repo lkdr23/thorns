@@ -169,10 +169,10 @@ def _multiprocessing_map(func, iterable, cfg):
     results = []
     for args in iterable:
         results.append( pool.apply_async(wrap, (args,)) )
-
-
+    
+    pool.close()
     for result in results:
-        yield result.get(9999999)
+        yield result.get(7200)
 
 
 
